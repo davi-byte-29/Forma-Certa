@@ -1,0 +1,41 @@
+:root{--bg:#050b1a;--panel:#0a1630;--line:#1b3a6b;--cy:#00e5ff;--mg:#ff2bd6;--tx:#d6f6ff}
+*{box-sizing:border-box;margin:0}
+html,body{height:100%}
+body{background:radial-gradient(circle at 50% 0,#0d2150 0,var(--bg) 60%);color:var(--tx);font-family:Rajdhani,"Segoe UI",system-ui,sans-serif;font-weight:500;overflow:hidden;
+  display:flex;justify-content:center;padding:env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left)}
+.app{position:relative;width:100%;max-width:1400px;height:100dvh;display:flex;flex-direction:column;background:rgba(10,22,48,.6);border-inline:1px solid var(--line);overflow:hidden}
+header{display:flex;align-items:center;gap:clamp(8px,2vw,18px);padding:clamp(6px,1.4vh,12px) clamp(8px,2vw,18px);background:linear-gradient(90deg,#0b1f45,#0a1630);border-bottom:1px solid var(--cy);box-shadow:0 0 18px rgba(0,229,255,.25)}
+h1{flex:1;font:800 clamp(18px,4.2vw,36px) Orbitron,"Arial Black",sans-serif;letter-spacing:.12em;color:var(--cy);text-shadow:0 0 12px rgba(0,229,255,.7);white-space:nowrap}
+h1 span{color:var(--mg);text-shadow:0 0 12px rgba(255,43,214,.7);margin-left:.3em}
+.info{display:flex;align-items:center;gap:10px;font-size:clamp(14px,2.4vw,22px);font-weight:700;white-space:nowrap}
+.info b{font:700 clamp(14px,2.6vw,24px) Orbitron,sans-serif;color:var(--bg);background:var(--cy);border-radius:6px;padding:3px 12px;box-shadow:0 0 12px rgba(0,229,255,.6)}
+.bar{height:4px;background:#0a1630}
+.bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--cy),var(--mg));box-shadow:0 0 10px var(--cy);transition:width .4s}
+button{font:inherit;font-weight:700;letter-spacing:.04em;cursor:pointer;color:var(--cy);background:rgba(0,229,255,.08);border:1px solid var(--cy);border-radius:8px;padding:clamp(7px,1.4vh,11px) clamp(10px,2vw,18px);min-height:40px;transition:background .15s,box-shadow .15s,transform .1s}
+button:hover{background:rgba(0,229,255,.22);box-shadow:0 0 14px rgba(0,229,255,.5)}
+button:active{transform:scale(.95)}
+button:focus-visible{outline:3px solid var(--mg);outline-offset:2px}
+#home{font-size:24px;line-height:1;width:44px;padding:0}
+#board{flex:1;min-height:0;width:100%;display:block;touch-action:none;user-select:none;-webkit-user-select:none}
+#board polygon{will-change:transform;cursor:grab;stroke:rgba(255,255,255,.75);stroke-width:.05;stroke-linejoin:round}
+#board polygon:active{cursor:grabbing}
+#board polygon.sel{stroke:#fff;stroke-width:.11}
+#board .sil{fill:rgba(0,229,255,.13);stroke:var(--cy);stroke-width:.06;cursor:default;pointer-events:none}
+#board .div{stroke:var(--mg);stroke-width:.07;stroke-dasharray:.5 .35;opacity:.8}
+footer{display:flex;flex-wrap:wrap;gap:8px;align-items:center;padding:clamp(6px,1.4vh,12px) clamp(8px,2vw,18px);background:#0a1630;border-top:1px solid var(--line)}
+footer button{flex:0 1 auto}
+#moves{margin-left:auto;font:600 clamp(12px,2vw,16px) Orbitron,sans-serif;color:var(--cy)}
+#win{position:absolute;inset:0;background:rgba(5,11,26,.82);display:flex;align-items:center;justify-content:center;padding:16px;z-index:5}
+#win.hidden{display:none}
+.box{background:var(--panel);border:1px solid var(--cy);border-radius:14px;padding:clamp(18px,4vw,34px) clamp(20px,5vw,44px);text-align:center;box-shadow:0 0 30px rgba(0,229,255,.45);animation:pop .35s ease-out}
+.box h2{font:800 clamp(24px,6vw,42px) Orbitron,sans-serif;color:var(--cy);text-shadow:0 0 14px var(--cy);margin-bottom:10px}
+.box p{margin-bottom:18px;font-size:clamp(16px,3vw,20px)}
+@keyframes pop{from{transform:scale(.6);opacity:0}to{transform:scale(1);opacity:1}}
+@media (max-height:460px){header{padding:4px 10px}h1{font-size:18px}button{min-height:34px;padding:4px 10px}footer{padding:4px 10px}}
+@media (max-width:420px){footer button{flex:1 1 40%}#moves{flex:1 1 100%;text-align:center;margin:0}}
+@media (prefers-reduced-motion:reduce){.box,.bar i{animation:none;transition:none}}
+#board .silo{fill:none;stroke:var(--cy);stroke-width:.22;stroke-linejoin:round;pointer-events:none;cursor:default}
+#board .silf{fill:#0b3558;stroke:#0b3558;stroke-width:.1;stroke-linejoin:round;pointer-events:none;cursor:default}
+.info small{font-size:.75em;color:var(--mg);font-weight:700}
+footer button:disabled{cursor:not-allowed;box-shadow:none}
+@media (max-width:420px){.info small{display:none}}
